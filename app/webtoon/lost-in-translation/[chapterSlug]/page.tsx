@@ -1,6 +1,6 @@
 import cloudinary from "cloudinary";
 import { CloudinaryImage } from "../../../cloudinary-image";
-import { ChapterSelect } from "../chapter-select";
+import { ChapterSelect } from "../../chapter-select";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -224,10 +224,10 @@ function NavButton({
   return <div></div>;
 }
 
-export default async function WebtoonLiTPage({
+export default async function WebtoonChapterPage({
   params,
 }: {
-  params: { chapterSlug: string };
+  params: { chapterSlug: string; webtoonSlug: string };
 }) {
   const results = (await cloudinary.v2.search
     .expression(
@@ -246,7 +246,7 @@ export default async function WebtoonLiTPage({
       slug: string;
       name: string;
     }) || {};
-  console.log(chapterData.key + 1);
+  // console.log(chapterData.key + 1);
   let prevChapterData =
     (chapterName.find((chapter) => chapter.key == chapterData.key - 1) as {
       key: number;
@@ -260,9 +260,9 @@ export default async function WebtoonLiTPage({
       name: string;
     }) || {};
   // console.log(chapterName[2]);
-  if (results.resources.length === 0) {
-    return notFound();
-  }
+  // if (results.resources.length === 0) {
+  //   return notFound();
+  // }
 
   return (
     <div className="space-y-4">
