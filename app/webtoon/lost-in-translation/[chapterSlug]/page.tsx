@@ -237,7 +237,7 @@ export default async function WebtoonLiTPage({
           initialChapter={chapterData.name}
           chapterName={chapterName}
         />
-        <div className="flex space-x-2 before:content-['\f287']">
+        <div className="flex space-x-2">
           <Button>PREV</Button>
           <Button>NEXT</Button>
         </div>
