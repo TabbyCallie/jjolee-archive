@@ -253,14 +253,12 @@ export default async function WebtoonLiTPage({
       slug: string;
       name: string;
     }) || {};
-  const prevChapterSlug = "./" + prevChapterData.slug;
   let nextChapterData =
     (chapterName.find((chapter) => chapter.key == chapterData.key + 1) as {
       key: number;
       slug: string;
       name: string;
     }) || {};
-  const nextChapterSlug = "./" + nextChapterData.slug;
   // console.log(chapterName[2]);
   if (results.resources.length === 0) {
     return notFound();
@@ -268,7 +266,7 @@ export default async function WebtoonLiTPage({
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between">
+      <div className="flex justify-between space-x-2">
         <ChapterSelect
           initialChapter={chapterData.name}
           chapterName={chapterName}
@@ -276,12 +274,12 @@ export default async function WebtoonLiTPage({
         <div className="flex space-x-2">
           <NavButton
             numb={prevChapterData.key}
-            slug={prevChapterSlug}
+            slug={"./" + prevChapterData.slug}
             name="PREV"
           />
           <NavButton
             numb={nextChapterData.key}
-            slug={nextChapterSlug}
+            slug={"./" + nextChapterData.slug}
             name="NEXT"
           />
         </div>
@@ -297,16 +295,15 @@ export default async function WebtoonLiTPage({
           />
         ))}
       </div>
-
       <div className="flex space-x-2 justify-between">
         <NavButton
           numb={prevChapterData.key}
-          slug={prevChapterSlug}
+          slug={"./" + prevChapterData.slug}
           name="PREV"
         />
         <NavButton
           numb={nextChapterData.key}
-          slug={nextChapterSlug}
+          slug={"./" + nextChapterData.slug}
           name="NEXT"
         />
       </div>

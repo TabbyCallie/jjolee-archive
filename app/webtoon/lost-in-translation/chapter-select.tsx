@@ -42,7 +42,7 @@ export function ChapterSelect({
         router.refresh();
       }}
     >
-      <SelectTrigger className="w-[280px]">
+      <SelectTrigger className="max-w-[280px]">
         <SelectValue placeholder={chapter}>{chapter}</SelectValue>
       </SelectTrigger>
       <SelectContent>
