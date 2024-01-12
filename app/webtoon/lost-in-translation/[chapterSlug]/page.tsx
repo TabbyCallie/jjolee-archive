@@ -3,6 +3,7 @@ import { CloudinaryImage } from "../../../cloudinary-image";
 import { ChapterSelect } from "../chapter-select";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const chapterName: {
   key: number;
@@ -203,6 +204,26 @@ export type chapterImages = {
   public_id: string;
   tags: string[];
 };
+
+function NavButton({
+  numb,
+  slug,
+  name,
+}: {
+  numb: number;
+  slug: string;
+  name: string;
+}) {
+  if (numb) {
+    return (
+      <Button asChild>
+        <Link href={slug}>{name}</Link>
+      </Button>
+    );
+  }
+  return <div></div>;
+}
+
 export default async function WebtoonLiTPage({
   params,
 }: {
@@ -225,11 +246,26 @@ export default async function WebtoonLiTPage({
       slug: string;
       name: string;
     }) || {};
-
+  console.log(chapterData.key + 1);
+  let prevChapterData =
+    (chapterName.find((chapter) => chapter.key == chapterData.key - 1) as {
+      key: number;
+      slug: string;
+      name: string;
+    }) || {};
+  const prevChapterSlug = "./" + prevChapterData.slug;
+  let nextChapterData =
+    (chapterName.find((chapter) => chapter.key == chapterData.key + 1) as {
+      key: number;
+      slug: string;
+      name: string;
+    }) || {};
+  const nextChapterSlug = "./" + nextChapterData.slug;
   // console.log(chapterName[2]);
   if (results.resources.length === 0) {
     return notFound();
   }
+
   return (
     <div className="space-y-4">
       <div className="flex justify-between">
@@ -238,8 +274,16 @@ export default async function WebtoonLiTPage({
           chapterName={chapterName}
         />
         <div className="flex space-x-2">
-          <Button>PREV</Button>
-          <Button>NEXT</Button>
+          <NavButton
+            numb={prevChapterData.key}
+            slug={prevChapterSlug}
+            name="PREV"
+          />
+          <NavButton
+            numb={nextChapterData.key}
+            slug={nextChapterSlug}
+            name="NEXT"
+          />
         </div>
       </div>
       <div className="">
@@ -252,6 +296,19 @@ export default async function WebtoonLiTPage({
             alt="an image of something"
           />
         ))}
+      </div>
+
+      <div className="flex space-x-2 justify-between">
+        <NavButton
+          numb={prevChapterData.key}
+          slug={prevChapterSlug}
+          name="PREV"
+        />
+        <NavButton
+          numb={nextChapterData.key}
+          slug={nextChapterSlug}
+          name="NEXT"
+        />
       </div>
     </div>
   );
