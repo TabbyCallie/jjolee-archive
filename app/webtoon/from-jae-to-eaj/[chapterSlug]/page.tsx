@@ -115,6 +115,10 @@ export default async function WebtoonChapterPage({
           slug={"./" + prevChapterData.slug}
           name="PREV"
         />
+        <ChapterSelect
+          initialChapter={chapterData.name}
+          chapterName={chapterName}
+        />
         <NavButton
           numb={nextChapterData.key}
           slug={"./" + nextChapterData.slug}
