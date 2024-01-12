@@ -47,7 +47,7 @@ export default async function WebtoonChapterPage({
     .expression(
       `folder: "webtoons/from-jae-to-eaj/${params.chapterSlug}/*"` // folder path
     )
-    .max_results(200)
+    .max_results(30)
     .sort_by("public_id", "asc") // make sure it's in order. public_id is the title of each image
     .with_field("tags")
     .execute()) as {

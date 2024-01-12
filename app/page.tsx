@@ -2,6 +2,7 @@ import cloudinary from "cloudinary";
 import Image from "next/image";
 import { CldImage } from "next-cloudinary";
 import { CloudinaryImage } from "./cloudinary-image";
+import Link from "next/link";
 export type SearchResult = {
   public_id: string;
   tags: string[];
@@ -19,17 +20,22 @@ export default async function Home() {
   console.log(results);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-4 md:p-24">
-      <div className="">
-        {results.resources.map((result) => (
-          <CloudinaryImage
-            key={result.public_id}
-            imagedata={result}
-            width="800"
-            height="1280"
-            alt="an image of something"
-          />
-        ))}
+    <main className="space-y-8">
+      <div className="text-lg">This website is a work in progress!!</div>
+      <div>
+        Read archived webtoons!
+        <ul className="list-inside list-disc">
+          <li>
+            <Link href="/webtoon/lost-in-translation/prologue">
+              Prologue of Lost in Translation
+            </Link>
+          </li>
+          <li>
+            <Link href="/webtoon/from-jae-to-eaj/one">
+              Part One of From Jae to Eaj
+            </Link>
+          </li>
+        </ul>
       </div>
     </main>
   );
