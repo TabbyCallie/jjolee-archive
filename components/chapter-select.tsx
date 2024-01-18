@@ -6,31 +6,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { usePathname, useRouter } from "next/navigation";
-import {
-  JSXElementConstructor,
-  Key,
-  PromiseLikeOfReactNode,
-  ReactElement,
-  ReactNode,
-  ReactPortal,
-  useEffect,
-  useState,
-} from "react";
-import { ArrayKeys } from "zod";
+import { useRouter } from "next/navigation";
+import { Key, useEffect, useState } from "react";
 
 export function ChapterSelect({
   initialChapter,
-  // webtoonSlug,
+  webtoonSlug,
   chapterName,
 }: {
   initialChapter: string;
-  // webtoonSlug: string;
+  webtoonSlug: string;
   chapterName: any[];
 }) {
   const [chapter, setChapter] = useState(initialChapter ?? "");
   const router = useRouter();
-  const pathname = usePathname();
 
   useEffect(() => {
     setChapter(initialChapter);
@@ -40,8 +29,8 @@ export function ChapterSelect({
       value={chapter}
       onValueChange={(e) => {
         setChapter;
-        router.replace(`/webtoon/lost-in-translation/${encodeURIComponent(e)}`);
-        // router.replace(`/webtoon/${webtoonSlug}/${encodeURIComponent(e)}`);
+        // router.replace(`/webtoon/lost-in-translation/${encodeURIComponent(e)}`);
+        router.replace(`/webtoon/${webtoonSlug}/${encodeURIComponent(e)}`);
         router.refresh();
       }}
     >
@@ -50,9 +39,9 @@ export function ChapterSelect({
       </SelectTrigger>
       <SelectContent>
         {chapterName.map(
-          (selection: { key: Key; slug: string; name: string }) => (
-            <SelectItem key={selection.key} value={selection.slug}>
-              {selection.name}
+          (selection: { key: Key; chapslug: string; chapname: string }) => (
+            <SelectItem key={selection.key} value={selection.chapslug}>
+              {selection.chapname}
             </SelectItem>
           )
         )}

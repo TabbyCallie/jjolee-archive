@@ -1,8 +1,10 @@
 "use client";
 
 import { CldImage, CldImageProps } from "next-cloudinary";
-import { SearchResult } from "@/app/page";
-
+export type SearchResult = {
+  public_id: string;
+  tags: string[];
+};
 export function CloudinaryImage(
   props: {
     imagedata: SearchResult;
