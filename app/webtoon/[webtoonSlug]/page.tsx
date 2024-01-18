@@ -311,7 +311,7 @@ export default async function WebtoonPage({
         <div className="h-full">
           <ScrollArea className="rounded-md border p-4 h-96 w-full">
             <ul>
-              {webtoonData.chapters.toReversed().map((data) => (
+              {webtoonData.chapters.reverse().map((data) => (
                 <li key={data.key}>
                   <Link href={"./" + webtoonData.slug + "/" + data.chapslug}>
                     {data.chapname}
