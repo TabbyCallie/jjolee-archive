@@ -219,7 +219,7 @@ const webtoonName: {
     slug: "july-17th",
     name: "JULY 17TH",
     img: "/july-17th.jpg",
-    description: "",
+    description: "a very special day for a very special boy.",
     chapters: [
       { key: 1, chapslug: "one-year-older", chapname: "[ one year older ]" },
     ],
@@ -229,7 +229,8 @@ const webtoonName: {
     slug: "from-jae-to-eaj",
     name: "from Jae to eaJ",
     img: "/from-jae-to-eaj.png",
-    description: "",
+    description:
+      "disclaimer: this is a fanmade project for Jae's birthday. (please leave a comment for Jae in either episode! I will be sending this to him on his birthday! please keep this project a secret!!!)",
     chapters: [
       { key: 1, chapslug: "one", chapname: "one" },
       { key: 2, chapslug: "two", chapname: "two" },
@@ -285,36 +286,50 @@ export default async function WebtoonPage({
       slug: string;
       name: string;
       img: string;
+      description: string;
       chapters: {
         key: number;
         chapslug: string;
         chapname: string;
       }[];
     }) || {};
-
   if (!webtoonData.name) {
     return notFound();
   } else {
     return (
-      <div className="w-full space-y-4">
-        <div className="bg-red-700 px-16 py-5 rounded-md">
-          <Image
-            className="rounded-full	"
-            src={webtoonData.img}
-            width={216}
-            height={216}
-            alt="JULY 17TH slice-of-life comic"
-          />
-
-          <h1 className="text-2xl ">{webtoonData.name}</h1>
+      <div className="w-full">
+        <div className="grid place-items-center lg:grid-cols-[1fr_2fr] bg-accent/50 px-16 py-3 rounded-md mb-4 justify-between">
+          <div className="	">
+            <Image
+              className="rounded-full	"
+              src={webtoonData.img}
+              width={160}
+              height={160}
+              alt={webtoonData.name}
+            />
+            <h1 className="text-2xl ">{webtoonData.name}</h1>
+          </div>
+          <div>{webtoonData.description}</div>
         </div>
         <div className="h-full">
-          <ScrollArea className="rounded-md border p-4 h-96 w-full">
+          <ScrollArea className="border rounded-md p-4 h-96 w-full">
             <ul>
               {webtoonData.chapters.reverse().map((data) => (
-                <li key={data.key}>
-                  <Link href={"./" + webtoonData.slug + "/" + data.chapslug}>
-                    {data.chapname}
+                <li className="border-b" key={data.key}>
+                  <Link
+                    className="flex items-center	"
+                    href={"./" + webtoonData.slug + "/" + data.chapslug}
+                  >
+                    <Image
+                      className="pr-2"
+                      src={`https://ik.imagekit.io/dd5mgem4p/thumbnails/${
+                        webtoonData.slug
+                      }/${data.chapname.replace(/[\[\]]/g, "_")} Thumbnail.png`}
+                      width={77}
+                      height={73}
+                      alt={data.chapname}
+                    />
+                    <span className="">{data.chapname}</span>
                   </Link>
                 </li>
               ))}

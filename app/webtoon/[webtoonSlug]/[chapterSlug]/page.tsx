@@ -441,7 +441,6 @@ async function getImages({
     privateKey: process.env.IMAGE_KIT_PRIVATE_KEY || "",
     urlEndpoint: process.env.IMAGE_KIT_URL_ENDPOINT || "",
   });
-  console.log(imagekit);
   const images = await imagekit.listFiles({
     path: `webtoons/${params.webtoonSlug}/${params.chapterSlug}/`,
     sort: "ASC_NAME",
