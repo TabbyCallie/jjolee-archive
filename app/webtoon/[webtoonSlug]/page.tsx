@@ -298,8 +298,8 @@ export default async function WebtoonPage({
   } else {
     return (
       <div className="w-full">
-        <div className="grid place-items-center lg:grid-cols-[1fr_2fr] bg-accent/50 px-16 py-3 rounded-md mb-4 justify-between">
-          <div className="	">
+        <div className="flex items-center bg-accent/50 text-accent-foreground px-8 md:px-16 py-3 md:py-6 rounded-md mb-4 space-x-4">
+          <div className="md:basis-1/3 flex flex-col items-center">
             <Image
               className="rounded-full	"
               src={webtoonData.img}
@@ -307,15 +307,18 @@ export default async function WebtoonPage({
               height={160}
               alt={webtoonData.name}
             />
-            <h1 className="text-2xl ">{webtoonData.name}</h1>
+            <h1 className="text-2xl text-foreground">{webtoonData.name}</h1>
           </div>
-          <div>{webtoonData.description}</div>
+          <div className="md:basis-2/3 text-sm">{webtoonData.description}</div>
         </div>
         <div className="h-full">
           <ScrollArea className="border rounded-md p-4 h-96 w-full">
             <ul>
               {webtoonData.chapters.reverse().map((data) => (
-                <li className="border-b" key={data.key}>
+                <li
+                  className="border-b hover:bg-accent/50 hover:text-accent-foreground focus:bg-accent/50 focus:text-accent-foreground"
+                  key={data.key}
+                >
                   <Link
                     className="flex items-center	"
                     href={"./" + webtoonData.slug + "/" + data.chapslug}
@@ -329,7 +332,7 @@ export default async function WebtoonPage({
                       height={73}
                       alt={data.chapname}
                     />
-                    <span className="">{data.chapname}</span>
+                    <span className="flex-initial">{data.chapname}</span>
                   </Link>
                 </li>
               ))}

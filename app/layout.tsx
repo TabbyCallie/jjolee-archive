@@ -76,7 +76,7 @@ export default function RootLayout({
                 <ModeToggle />
               </div>
             </header>
-            <main className="flex flex-col items-center justify-between p-4 md:px-24">
+            <main className="flex flex-col items-center p-4 md:px-24 mx-auto max-w-6xl">
               {children}
             </main>
           </ThemeProvider>

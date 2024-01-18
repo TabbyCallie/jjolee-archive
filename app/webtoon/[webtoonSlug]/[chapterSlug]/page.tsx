@@ -257,7 +257,7 @@ function NavButton({
       </Button>
     );
   }
-  return <div></div>;
+  return;
 }
 
 type Props = {
