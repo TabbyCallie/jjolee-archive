@@ -21,6 +21,8 @@ export default async function WebtoonChapterPage() {
     .execute()) as {
     resources: searchResult[];
   };
+  // cloudinary.v2.api.delete_folder("/webtoons").then(console.log);
+
   console.log(results);
   // const metadata = cloudinary.v2.api
   //   .list_metadata_fields(options)
