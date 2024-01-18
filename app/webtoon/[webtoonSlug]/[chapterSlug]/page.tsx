@@ -431,7 +431,7 @@ export default async function WebtoonChapterPage({
     );
   }
 }
-export async function getImages({
+async function getImages({
   params,
 }: {
   params: { webtoonSlug: string; chapterSlug: string };
