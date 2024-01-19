@@ -1,7 +1,7 @@
 import cloudinary from "cloudinary";
 import Image from "next/image";
 import { CldImage } from "next-cloudinary";
-import { CloudinaryImage } from "./cloudinary-image";
+import { CloudinaryImage } from "../components/cloudinary-image";
 import Link from "next/link";
 
 export default async function Home() {

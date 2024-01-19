@@ -1,44 +1,63 @@
 import cloudinary from "cloudinary";
-import { notFound } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { CloudinaryImage } from "../cloudinary-image";
-import { ModeToggle } from "@/components/ui/mode-toggle";
+import { CloudinaryImage } from "../../components/cloudinary-image";
 
-export type searchResult = {
+export type SearchResult = {
   public_id: string;
   tags: string[];
+  metadata: { caption: string; post_date: string; platform: string };
 };
 
-export default async function WebtoonChapterPage() {
+function shuffle(array: any[]) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+export default async function ArtPage({
+  searchParams: { search },
+}: {
+  searchParams: {
+    search: string;
+  };
+}) {
   const results = (await cloudinary.v2.search
-    .expression(
-      `folder: "art/*"` // folder path
-    )
+    // .expression('metadata.caption:"instead"')
+    .expression(`resource_type:image${search ? ` AND tags=${search}` : ""}`)
     .max_results(200)
-    .sort_by("public_id", "asc") // make sure it's in order. public_id is the title of each image
+    .with_field("metadata")
+    .sort_by("score", "desc")
     .with_field("tags")
     .execute()) as {
-    resources: searchResult[];
+    resources: SearchResult[];
   };
-  // cloudinary.v2.api.delete_folder("/webtoons").then(console.log);
 
   console.log(results);
-  // const metadata = cloudinary.v2.api
-  //   .list_metadata_fields(options)
-  //   .then(callback);
 
   return (
     <div>
-      <div className="">
-        {results.resources.map((result) => (
-          <CloudinaryImage
-            key={result.public_id}
-            imagedata={result}
-            width="400"
-            height="400"
-            alt="an image of something"
-          />
+      <div className="columns-1 gap-3 sm:columns-2 sm:gap-5 md:columns-3 lg:columns-4 space-y-3 sm:space-y-5">
+        {shuffle(results.resources).map((result) => (
+          <div key={result.public_id}>
+            <CloudinaryImage
+              imagedata={result}
+              width={400}
+              height={0}
+              alt="an image of something"
+            />
+          </div>
         ))}
       </div>
     </div>

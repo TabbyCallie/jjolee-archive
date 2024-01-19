@@ -3,8 +3,6 @@ import { ChapterSelect } from "../../../../components/chapter-select";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import path from "path";
-import fs from "fs";
 import Image from "next/image";
 import { Metadata, ResolvingMetadata } from "next";
 
