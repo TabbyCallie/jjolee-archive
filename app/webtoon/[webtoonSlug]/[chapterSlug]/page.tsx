@@ -390,6 +390,7 @@ export default async function WebtoonChapterPage({
         </div>
         <div className="">
           <Image
+            unoptimized
             key={first.fileId}
             src={first.url}
             width={800}
