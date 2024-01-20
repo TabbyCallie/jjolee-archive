@@ -399,6 +399,7 @@ export default async function WebtoonChapterPage({
           />
           {images.map(({ fileId, name, url }) => (
             <Image
+              unoptimized
               key={fileId}
               src={url}
               width={800}
