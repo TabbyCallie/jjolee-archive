@@ -280,7 +280,7 @@ export default async function WebtoonLiTPage() {
                 href="https://www.instagram.com/official.mayhem"
                 title="Official Mayhem Instagram"
               >
-                <SiInstagram className="text-fuchsia-600" size="2.25em" />
+                <SiInstagram className="text-fuchsia-600" size="1.9em" />
               </a>
             </div>
           </div>
