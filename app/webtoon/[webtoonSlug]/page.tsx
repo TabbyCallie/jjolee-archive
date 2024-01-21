@@ -298,7 +298,7 @@ export default async function WebtoonPage({
   } else {
     return (
       <div className="w-full">
-        <div className="flex items-center bg-accent/50 text-accent-foreground px-8 md:px-16 py-3 md:py-6 rounded-md mb-4 space-x-4">
+        <div className="flex flex-col md:flex-row items-center bg-accent/50 text-accent-foreground px-8 lg:px-16 py-3 md:py-6 rounded-md mb-4 md:space-x-4">
           <div className="md:basis-1/3 flex flex-col items-center">
             <Image
               className="rounded-full	"
@@ -309,7 +309,9 @@ export default async function WebtoonPage({
             />
             <h1 className="text-2xl text-foreground">{webtoonData.name}</h1>
           </div>
-          <div className="md:basis-2/3 text-sm">{webtoonData.description}</div>
+          <div className="pt-2 md:pt-0 md:basis-2/3 text-sm">
+            {webtoonData.description}
+          </div>
         </div>
         <div className="h-full">
           <ScrollArea className="border rounded-md p-4 h-96 w-full">

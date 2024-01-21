@@ -48,7 +48,7 @@ export default function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Webtoons</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[2fr_1fr]">
+            <ul className="grid gap-3 p-6 w-[calc(100vw-1.5rem)] sm:w-[400px] md:w-[500px] lg:grid-cols-[2fr_1fr]">
               <li className="row-span-2">
                 <NavigationMenuLink asChild>
                   <a
