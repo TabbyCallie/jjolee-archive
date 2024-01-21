@@ -216,9 +216,7 @@ const webtoonName: {
   ],
 };
 
-export async function generateMetadata(
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   // fetch data
   return {
     title: webtoonName.name,
