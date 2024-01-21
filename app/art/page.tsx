@@ -4,7 +4,13 @@ import { CloudinaryImage } from "../../components/cloudinary-image";
 export type SearchResult = {
   public_id: string;
   tags: string[];
-  metadata: { caption: string; post_date: string; platform: string };
+  metadata: {
+    caption: string;
+    post_date: string;
+    platform: string;
+    twitter_link: string;
+    instagram_link: string;
+  };
 };
 
 function shuffle(array: any[]) {
@@ -53,10 +59,12 @@ export default async function ArtPage({
           <div key={result.public_id}>
             <CloudinaryImage
               imagedata={result}
-              width={400}
+              width={500}
               height={0}
-              alt="an image of something"
+              alt={result.metadata.caption}
             />
+            {/* {console.log(result.metadata)} */}
+            <div>{result.metadata.caption}</div>
           </div>
         ))}
       </div>
