@@ -5,7 +5,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import { SiWebtoon, SiTwitter, SiInstagram } from "react-icons/si";
 
-const webtoonName: {
+export type webtoonFormat = {
   key: number;
   slug: string;
   name: string;
@@ -17,7 +17,9 @@ const webtoonName: {
     chapslug: string;
     chapname: string;
   }[];
-}[] = [
+};
+
+const webtoonName: webtoonFormat[] = [
   {
     key: 1,
     slug: "july-17th",
@@ -57,7 +59,6 @@ export async function generateMetadata(
   // fetch data
   let webtoonData =
     (webtoonName.find((webtoon) => webtoon.slug == params.webtoonSlug) as {
-      key: number;
       slug: string;
       name: string;
       img: string;
@@ -89,19 +90,9 @@ export default async function WebtoonPage({
   params: { webtoonSlug: string };
 }) {
   let webtoonData =
-    (webtoonName.find((webtoon) => webtoon.slug == params.webtoonSlug) as {
-      key: number;
-      slug: string;
-      name: string;
-      img: string;
-      description: string;
-      webtoonLink: string;
-      chapters: {
-        key: number;
-        chapslug: string;
-        chapname: string;
-      }[];
-    }) || {};
+    (webtoonName.find(
+      (webtoon) => webtoon.slug == params.webtoonSlug
+    ) as webtoonFormat) || {};
   if (!webtoonData.name) {
     return notFound();
   } else {

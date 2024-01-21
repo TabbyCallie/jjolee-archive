@@ -1,11 +1,10 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
 import { SiWebtoon, SiTwitter, SiInstagram } from "react-icons/si";
 
-const webtoonName: {
+export type webtoonFormat = {
   slug: string;
   name: string;
   img: string;
@@ -16,7 +15,9 @@ const webtoonName: {
     chapslug: string;
     chapname: string;
   }[];
-} = {
+};
+
+const webtoonName: webtoonFormat = {
   slug: "lost-in-translation",
   name: "Lost in Translation",
   img: "/lost-in-translation.jpg",
