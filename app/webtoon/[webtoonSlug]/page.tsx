@@ -115,6 +115,7 @@ export default async function WebtoonPage({
           <div className="flex flex-col md:flex-row items-center md:space-x-4 lg:px-10 w-full">
             <div className="md:basis-1/3 flex flex-col self-center items-center">
               <Image
+                unoptimized
                 className="rounded-full	"
                 src={webtoonData.img}
                 width={160}
