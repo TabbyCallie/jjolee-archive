@@ -12,6 +12,7 @@ export type webtoonFormat = {
   img: string;
   webtoonLink: string;
   description: string;
+  nb?: string;
   chapters: {
     key: number;
     chapslug: string;
@@ -45,6 +46,18 @@ const webtoonName: webtoonFormat[] = [
       { key: 1, chapslug: "one", chapname: "one" },
       { key: 2, chapslug: "two", chapname: "two" },
     ],
+  },
+  {
+    key: 3,
+    slug: "rewriting-extinction",
+    name: "Rewriting Extinction",
+    img: "/rewriting-extinction.jpg",
+    webtoonLink:
+      "https://www.webtoons.com/en/comedy/rewriting-extinction/list?title_no=3648",
+    description:
+      "An anthology dedicated to saving as many species from extinction as humanly possible.",
+    nb: "Each artist created a different chapter. Please note that this archive only archived _jjolee's chapter.",
+    chapters: [{ key: 1, chapslug: "earth", chapname: "EARTH" }],
   },
 ];
 
@@ -114,6 +127,13 @@ export default async function WebtoonPage({
             </div>
             <div className="md:basis-2/3 pt-2 md:py-5 text-sm space-y-3 flex flex-col justify-between">
               <div>{webtoonData.description}</div>
+              {webtoonData.nb ? (
+                <div className="text-accent-foreground/70 italic">
+                  {webtoonData.nb}
+                </div>
+              ) : (
+                ""
+              )}
               <div className="flex space-x-2 self-center md:self-auto">
                 <a href={webtoonData.webtoonLink} title="Official Webtoon Link">
                   <SiWebtoon className="text-[#00DC64]" size="2em" />

@@ -49,7 +49,7 @@ export default function NavigationMenuDemo() {
           <NavigationMenuTrigger>Webtoons</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 w-[calc(100vw-1.5rem)] sm:w-[400px] md:w-[500px] lg:grid-cols-[2fr_1fr]">
-              <li className="row-span-2">
+              <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
@@ -80,6 +80,13 @@ export default function NavigationMenuDemo() {
               </ListItem>
               <ListItem href="/webtoon/july-17th" title="JULY 17TH">
                 a very special day for a very special boy.
+              </ListItem>
+              <ListItem
+                href="/webtoon/rewriting-extinction"
+                title="Rewriting Extinction"
+              >
+                An anthology dedicated to saving as many species from extinction
+                as humanly possible.
               </ListItem>
             </ul>
           </NavigationMenuContent>

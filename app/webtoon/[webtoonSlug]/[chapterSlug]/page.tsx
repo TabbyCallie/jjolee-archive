@@ -5,19 +5,21 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata, ResolvingMetadata } from "next";
-
-const webtoonName: {
+export type chapterFormat = {
+  key: number;
+  chapslug: string;
+  chapname: string;
+};
+export type webtoonFormat = {
   key: number;
   slug: string;
   name: string;
   img: string;
   description: string;
-  chapters: {
-    key: number;
-    chapslug: string;
-    chapname: string;
-  }[];
-}[] = [
+  chapters: chapterFormat[];
+};
+
+const webtoonName: webtoonFormat[] = [
   {
     key: 1,
     slug: "lost-in-translation",
@@ -237,6 +239,14 @@ const webtoonName: {
       { key: 2, chapslug: "two", chapname: "two" },
     ],
   },
+  {
+    key: 4,
+    slug: "rewriting-extinction",
+    name: "Rewriting Extinction",
+    img: "/rewriting-extinction.jpg",
+    description: "",
+    chapters: [{ key: 1, chapslug: "earth", chapname: "EARTH" }],
+  },
 ];
 
 function NavButton({
@@ -268,17 +278,9 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   // fetch data
   let webtoonData =
-    (webtoonName.find((webtoon) => webtoon.slug == params.webtoonSlug) as {
-      key: number;
-      slug: string;
-      name: string;
-      img: string;
-      chapters: {
-        key: number;
-        chapslug: string;
-        chapname: string;
-      }[];
-    }) || {};
+    (webtoonName.find(
+      (webtoon) => webtoon.slug == params.webtoonSlug
+    ) as webtoonFormat) || {};
 
   let chapterData =
     (webtoonData.chapters.find(
@@ -331,38 +333,25 @@ export default async function WebtoonChapterPage({
   images.shift();
 
   let webtoonData =
-    (webtoonName.find((webtoon) => webtoon.slug == params.webtoonSlug) as {
-      key: number;
-      slug: string;
-      name: string;
-      img: string;
-      chapters: {
-        key: number;
-        chapslug: string;
-        chapname: string;
-      }[];
-    }) || {};
+    (webtoonName.find(
+      (webtoon) => webtoon.slug == params.webtoonSlug
+    ) as webtoonFormat) || {};
   let chapterName = webtoonData.chapters;
   // console.log(chapterName);
   let chapterData =
-    (chapterName.find((chapter) => chapter.chapslug == params.chapterSlug) as {
-      key: number;
-      chapslug: string;
-      chapname: string;
-    }) || {};
+    (chapterName.find(
+      (chapter) => chapter.chapslug == params.chapterSlug
+    ) as chapterFormat) || {};
   // console.log(chapterData.key + 1);
   let prevChapterData =
-    (chapterName.find((chapter) => chapter.key == chapterData.key - 1) as {
-      key: number;
-      chapslug: string;
-      chapname: string;
-    }) || {};
+    (chapterName.find(
+      (chapter) => chapter.key == chapterData.key - 1
+    ) as chapterFormat) || {};
   let nextChapterData =
-    (chapterName.find((chapter) => chapter.key == chapterData.key + 1) as {
-      key: number;
-      chapslug: string;
-      chapname: string;
-    }) || {};
+    (chapterName.find(
+      (chapter) => chapter.key == chapterData.key + 1
+    ) as chapterFormat) || {};
+  console.log(nextChapterData);
 
   if (!chapterData.chapname) {
     return notFound();
