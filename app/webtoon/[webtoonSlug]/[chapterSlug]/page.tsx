@@ -1,23 +1,11 @@
 import ImageKit from "imagekit";
-import { ChapterSelect } from "../../../../components/chapter-select";
+import { ChapterSelect } from "@/components/chapter-select";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata, ResolvingMetadata } from "next";
-export type chapterFormat = {
-  key: number;
-  chapslug: string;
-  chapname: string;
-};
-export type webtoonFormat = {
-  key: number;
-  slug: string;
-  name: string;
-  img: string;
-  description: string;
-  chapters: chapterFormat[];
-};
+import type { webtoonFormat, chapterFormat } from "@/utils/types";
 
 const webtoonName: webtoonFormat[] = [
   {
@@ -25,8 +13,6 @@ const webtoonName: webtoonFormat[] = [
     slug: "lost-in-translation",
     name: "Lost in Translation",
     img: "/lost-in-translation.jpg",
-    description:
-      "The up-and-coming K-pop group Mayhem is steadily climbing the charts, but fame doesn't come for free. Bad Boy front man of the group Wyld knows this all too well. Forced to take on a controversial persona behind his fellow members' backs to help keep the momentum going, can Wyld keep sight of himself beneath all the lies and scandals? Or will he become his own false persona?",
     chapters: [
       { key: 1, chapslug: "prologue", chapname: "Prologue" },
       { key: 2, chapslug: "episode-1", chapname: "Episode 1" },
@@ -223,7 +209,6 @@ const webtoonName: webtoonFormat[] = [
     slug: "july-17th",
     name: "JULY 17TH",
     img: "/july-17th.jpg",
-    description: "",
     chapters: [
       { key: 1, chapslug: "one-year-older", chapname: "[ one year older ]" },
     ],
@@ -233,7 +218,6 @@ const webtoonName: webtoonFormat[] = [
     slug: "from-jae-to-eaj",
     name: "from Jae to eaJ",
     img: "/from-jae-to-eaj.png",
-    description: "",
     chapters: [
       { key: 1, chapslug: "one", chapname: "one" },
       { key: 2, chapslug: "two", chapname: "two" },
@@ -244,8 +228,20 @@ const webtoonName: webtoonFormat[] = [
     slug: "rewriting-extinction",
     name: "Rewriting Extinction",
     img: "/rewriting-extinction.jpg",
-    description: "",
     chapters: [{ key: 1, chapslug: "earth", chapname: "EARTH" }],
+  },
+  {
+    key: 5,
+    slug: "what-the-moon-hides",
+    name: "What The Moon Hides",
+    img: "/what-the-moon-hides.jpg",
+    chapters: [
+      { key: 1, chapslug: "first-encounter", chapname: "first encounter" },
+      { key: 2, chapslug: "challenger", chapname: "challenger" },
+      { key: 3, chapslug: "unexpected", chapname: "unexpected" },
+      { key: 4, chapslug: "invitation", chapname: "invitation" },
+      { key: 5, chapslug: "last-customer", chapname: "last customer" },
+    ],
   },
 ];
 

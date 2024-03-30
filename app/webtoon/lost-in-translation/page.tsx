@@ -3,21 +3,10 @@ import Link from "next/link";
 import { Metadata } from "next";
 import Image from "next/image";
 import { SiWebtoon, SiTwitter, SiInstagram } from "react-icons/si";
+import type { webtoonFormatExt } from "@/utils/types";
 
-export type webtoonFormat = {
-  slug: string;
-  name: string;
-  img: string;
-  webtoonLink: string;
-  description: string;
-  chapters: {
-    key: number;
-    chapslug: string;
-    chapname: string;
-  }[];
-};
-
-const webtoonName: webtoonFormat = {
+const webtoonName: webtoonFormatExt = {
+  key: 0,
   slug: "lost-in-translation",
   name: "Lost in Translation",
   img: "/lost-in-translation.jpg",
@@ -242,7 +231,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function WebtoonLiTPage() {
   return (
     <div className="w-full">
-      <div className="bg-accent/50 text-accent-foreground px-3 md:p-6 py-3 rounded-md mb-4 flex flex-wrap">
+      <div className="bg-accent/50  text-accent-foreground px-3 md:p-6 py-3 rounded-md mb-4 flex flex-wrap">
         <div className="flex flex-col md:flex-row items-grow md:space-x-4 lg:px-10 w-full">
           <div className="md:basis-1/3 flex flex-col self-center items-center">
             <Image
@@ -266,7 +255,7 @@ export default async function WebtoonLiTPage() {
                 <SiWebtoon className="text-[#00DC64]" size="2em" />
               </a>
               <a href="https://twitter.com/95wyld" title="Wyld's Twitter">
-                <SiTwitter className="text-red-800" size="2em" />
+                <SiTwitter className="text-red-800 h-5 w-5" size="" />
               </a>
               <a href="https://twitter.com/mayhem_2ms" title="Minsoo's Twitter">
                 <SiTwitter className="text-zinc-300" size="2em" />

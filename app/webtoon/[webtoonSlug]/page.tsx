@@ -3,24 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
-import { SiWebtoon, SiTwitter, SiInstagram } from "react-icons/si";
+import { SiWebtoon } from "react-icons/si";
+import type { webtoonFormatExt } from "@/utils/types";
 
-export type webtoonFormat = {
-  key: number;
-  slug: string;
-  name: string;
-  img: string;
-  webtoonLink: string;
-  description: string;
-  nb?: string;
-  chapters: {
-    key: number;
-    chapslug: string;
-    chapname: string;
-  }[];
-};
-
-const webtoonName: webtoonFormat[] = [
+const webtoonName: webtoonFormatExt[] = [
   {
     key: 1,
     slug: "july-17th",
@@ -58,6 +44,24 @@ const webtoonName: webtoonFormat[] = [
       "An anthology dedicated to saving as many species from extinction as humanly possible.",
     nb: "Each artist created a different chapter. Please note that this archive only archived _jjolee's chapter.",
     chapters: [{ key: 1, chapslug: "earth", chapname: "EARTH" }],
+  },
+  {
+    key: 4,
+    slug: "what-the-moon-hides",
+    name: "What The Moon Hides",
+    img: "/what-the-moon-hides.jpg",
+    webtoonLink:
+      "https://www.webtoons.com/en/canvas/what-the-moon-hides/list?title_no=936242",
+    description:
+      "For years, Sett has been searching for a worthy opponent skilled enough to challenge his strength... Until he finally meets a stranger who dares take on the task. But this stranger seems to have more hidden beneath the surface... Perhaps more than what Sett bargained for.",
+    nb: "** DISCLAIMER: Sett/ Aphelios / Alune are characters under Riot Games' IP. This is purely fanmade work and NOT in collaboration with Riot Games! ** \n\nUPDATES EVERY MONDAY",
+    chapters: [
+      { key: 1, chapslug: "first-encounter", chapname: "first encounter" },
+      { key: 2, chapslug: "challenger", chapname: "challenger" },
+      { key: 3, chapslug: "unexpected", chapname: "unexpected" },
+      { key: 4, chapslug: "invitation", chapname: "invitation" },
+      { key: 5, chapslug: "last-customer", chapname: "last customer" },
+    ],
   },
 ];
 
@@ -105,7 +109,7 @@ export default async function WebtoonPage({
   let webtoonData =
     (webtoonName.find(
       (webtoon) => webtoon.slug == params.webtoonSlug
-    ) as webtoonFormat) || {};
+    ) as webtoonFormatExt) || {};
   if (!webtoonData.name) {
     return notFound();
   } else {
