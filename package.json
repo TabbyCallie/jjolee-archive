@@ -19,7 +19,7 @@
     "cloudinary": "^1.41.2",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.3",
-    "imagekit": "^4.1.4",
+    "imagekit": "^5.0.0",
     "imagemin": "^8.0.1",
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-pngquant": "^9.0.2",
