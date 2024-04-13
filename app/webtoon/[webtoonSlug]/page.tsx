@@ -61,6 +61,7 @@ const webtoonName: webtoonFormatExt[] = [
       { key: 3, chapslug: "unexpected", chapname: "unexpected" },
       { key: 4, chapslug: "invitation", chapname: "invitation" },
       { key: 5, chapslug: "last-customer", chapname: "last customer" },
+      { key: 6, chapslug: "to-see-you", chapname: "to see you" },
     ],
   },
 ];

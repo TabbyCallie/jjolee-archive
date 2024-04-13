@@ -1,7 +1,3 @@
-import cloudinary from "cloudinary";
-import Image from "next/image";
-import { CldImage } from "next-cloudinary";
-import { CloudinaryImage } from "../components/cloudinary-image";
 import Link from "next/link";
 
 export default async function Home() {
@@ -9,7 +5,7 @@ export default async function Home() {
     <main className="space-y-8">
       <div className="text-lg">This website is a work in progress!!</div>
       <div>
-        Read archived webtoons!
+        Webtoons no longer freely accessible on Webtoon:
         <ul className="list-inside list-disc">
           <li>
             <Link href="/webtoon/lost-in-translation/prologue">
@@ -17,8 +13,8 @@ export default async function Home() {
             </Link>
           </li>
           <li>
-            <Link href="/webtoon/from-jae-to-eaj/one">
-              Part One of From Jae to Eaj
+            <Link href="/webtoon/july-17th/one-year-older">
+              July 17th [A birthday comic for a friend of jjolee]
             </Link>
           </li>
         </ul>
