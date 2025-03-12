@@ -255,7 +255,7 @@ export default async function WebtoonLiTPage() {
                 <SiWebtoon className="text-[#00DC64]" size="2em" />
               </a>
               <a href="https://twitter.com/95wyld" title="Wyld's Twitter">
-                <SiTwitter className="text-red-800 h-5 w-5" size="" />
+                <SiTwitter className="text-red-800" size="2em" />
               </a>
               <a href="https://twitter.com/mayhem_2ms" title="Minsoo's Twitter">
                 <SiTwitter className="text-zinc-300" size="2em" />
