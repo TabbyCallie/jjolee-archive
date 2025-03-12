@@ -4,12 +4,18 @@ import { CloudinaryImage } from "../../components/cloudinary-image";
 export type SearchResult = {
   public_id: string;
   tags: string[];
+  created_at: Date;
   metadata: {
+    platform: string[];
+    twitterlink: string;
     caption: string;
-    post_date: string;
-    platform: string;
-    twitter_link: string;
-    instagram_link: string;
+    datetime: string;
+    instagramlink: string;
+    instagramcaption: string;
+    instagramdatetime: string;
+    tumblrlink: string;
+    tumblrcaption: string;
+    tumblrdatetime: string;
   };
 };
 
@@ -41,7 +47,11 @@ export default async function ArtPage({
 }) {
   const results = (await cloudinary.v2.search
     // .expression('metadata.caption:"instead"')
-    .expression(`resource_type:image${search ? ` AND tags=${search}` : ""}`)
+    .expression(
+      `folder: "/*" AND resource_type:image${
+        search ? ` AND tags=${search}` : ""
+      }`
+    )
     .max_results(200)
     .with_field("metadata")
     .sort_by("score", "desc")
@@ -50,23 +60,39 @@ export default async function ArtPage({
     resources: SearchResult[];
   };
 
-  console.log(results);
+  for (let i = 0; i < results.resources.length; i++) {
+    const element = results.resources[i];
+    // element.created_at =
+
+    var dates: number[] = [];
+    if (element.metadata.datetime)
+      dates.push(Date.parse(element.metadata.datetime));
+    if (element.metadata.instagramdatetime)
+      dates.push(Date.parse(element.metadata.instagramdatetime));
+    if (element.metadata.tumblrdatetime)
+      dates.push(Date.parse(element.metadata.tumblrdatetime));
+
+    element.created_at = new Date(Math.min.apply(null, dates));
+  }
 
   return (
     <div>
-      <div className="columns-1 gap-3 sm:columns-2 sm:gap-5 md:columns-3 lg:columns-4 space-y-3 sm:space-y-5">
-        {shuffle(results.resources).map((result) => (
-          <div key={result.public_id}>
-            <CloudinaryImage
-              imagedata={result}
-              width={500}
-              height={0}
-              alt={result.metadata.caption}
-            />
-            {/* {console.log(result.metadata)} */}
-            <div>{result.metadata.caption}</div>
-          </div>
-        ))}
+      <div className="columns-1 gap-3 space-y-3 sm:columns-2 sm:gap-5 sm:space-y-5 md:columns-3 lg:columns-4">
+        {/* {shuffle(results.resources).map((result) => ( */}
+        {results.resources
+          .sort((a, b) => b.created_at.valueOf() - a.created_at.valueOf())
+          .map((result) => (
+            <div key={result.public_id}>
+              <CloudinaryImage
+                imagedata={result}
+                width={500}
+                height={0}
+                alt={result.metadata.caption}
+              />
+              {/* {console.log(result.metadata)} */}
+              <div>{result.created_at.toDateString()}</div>
+            </div>
+          ))}
       </div>
     </div>
   );
