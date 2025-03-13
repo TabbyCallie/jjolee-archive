@@ -1,6 +1,6 @@
 import cloudinary from "./cloudinary";
 
-let cachedResults;
+let cachedResults = true;
 
 export default async function getResults() {
   if (!cachedResults) {
