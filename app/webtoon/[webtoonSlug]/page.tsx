@@ -254,7 +254,7 @@ export default async function WebtoonPage({
   } else {
     return (
       <div className="w-full">
-        <div className="bg-accent/50 text-accent-foreground px-3 md:p-6 py-3 rounded-md mb-4 flex flex-wrap">
+        <div className="bg-accent/50 text-accent-foreground p-3 md:p-6 rounded-md mb-4 flex flex-wrap">
           <div className="flex flex-col md:flex-row items-center md:space-x-4 lg:px-10 w-full">
             <div className="md:basis-1/3 flex flex-col self-center items-center">
               <Image

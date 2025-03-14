@@ -551,6 +551,9 @@ export default async function WebtoonChapterPage({
             name="NEXT"
           />
         </div>
+        <div className="mt-4 p-3 max-w-[800px] bg-accent/30 rounded-sm text-accent-foreground text-sm">
+          {chapterData.note}
+        </div>
       </div>
     );
   }
