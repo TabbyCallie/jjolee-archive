@@ -62,6 +62,30 @@ const webtoonName: webtoonFormatExt[] = [
       { key: 4, chapslug: "invitation", chapname: "invitation" },
       { key: 5, chapslug: "last-customer", chapname: "last customer" },
       { key: 6, chapslug: "to-see-you", chapname: "to see you" },
+      { key: 7, chapslug: "the-other-side", chapname: "the other side" },
+      { key: 8, chapslug: "not-a-date", chapname: "not a date" },
+      { key: 9, chapslug: "a-nice-try", chapname: "a nice try" },
+      { key: 10, chapslug: "trickster", chapname: "trickster" },
+      { key: 11, chapslug: "prayer", chapname: "prayer" },
+      {
+        key: 12,
+        chapslug: "something-about-him",
+        chapname: "something about him",
+      },
+      { key: 13, chapslug: "revelation", chapname: "revelation" },
+      { key: 14, chapslug: "crescent", chapname: "crescent" },
+      { key: 15, chapslug: "a-long-time", chapname: "a long time" },
+      { key: 16, chapslug: "creator-note", chapname: "/Creator Note" },
+      { key: 17, chapslug: "about-you", chapname: "about you" },
+      { key: 18, chapslug: "mooncake", chapname: "mooncake" },
+      {
+        key: 19,
+        chapslug: "what-the-moon-hides",
+        chapname: "what the moon hides",
+      },
+      { key: 20, chapslug: "the-prophecy", chapname: "the prophecy" },
+      { key: 21, chapslug: "the-face-of-fear", chapname: "the face of fear" },
+      { key: 22, chapslug: "numbing-pain", chapname: "numbing pain" },
     ],
   },
 ];
@@ -150,11 +174,11 @@ export default async function WebtoonPage({
         </div>
 
         <div className="h-full">
-          <ScrollArea className="border rounded-md p-4 h-96 w-full">
+          <ScrollArea className="border rounded-md p-4 max-h-screen w-full">
             <ul>
               {webtoonData.chapters.reverse().map((data) => (
                 <li
-                  className="border-b hover:bg-accent/50 hover:text-accent-foreground focus:bg-accent/50 focus:text-accent-foreground"
+                  className="border-b hover:bg-accent/50 hover:rounded-sm hover:text-accent-foreground focus:bg-accent/50 focus:text-accent-foreground"
                   key={data.key}
                 >
                   <Link
@@ -165,7 +189,10 @@ export default async function WebtoonPage({
                       className="pr-2"
                       src={`https://ik.imagekit.io/dd5mgem4p/thumbnails/${
                         webtoonData.slug
-                      }/${data.chapname.replace(/[\[\]]/g, "_")} Thumbnail.png`}
+                      }/${data.chapname.replace(
+                        /[\[\]\/]/g,
+                        "_"
+                      )} Thumbnail.png`}
                       width={77}
                       height={73}
                       alt={data.chapname}
