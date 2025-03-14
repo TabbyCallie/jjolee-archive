@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 
 import { cn } from "@/utils/cn";
 import {
@@ -14,7 +13,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-export default function NavigationMenuDemo() {
+export default function OurNavigationMenu() {
   return (
     <NavigationMenu>
       <NavigationMenuList>

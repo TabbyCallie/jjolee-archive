@@ -174,11 +174,11 @@ export default async function WebtoonPage({
         </div>
 
         <div className="h-full">
-          <ScrollArea className="border rounded-md p-4 max-h-screen w-full">
+          <ScrollArea className="border rounded-md p-4 h-[40rem] max-h-screen w-full">
             <ul>
               {webtoonData.chapters.reverse().map((data) => (
                 <li
-                  className="border-b hover:bg-accent/50 hover:rounded-sm hover:text-accent-foreground focus:bg-accent/50 focus:text-accent-foreground"
+                  className="border-b hover:rounded-sm hover:bg-accent/50 hover:text-accent-foreground focus:rounded-sm focus:bg-accent/50 focus:text-accent-foreground"
                   key={data.key}
                 >
                   <Link

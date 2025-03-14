@@ -231,7 +231,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function WebtoonLiTPage() {
   return (
     <div className="w-full">
-      <div className="bg-accent/50  text-accent-foreground px-3 md:p-6 py-3 rounded-md mb-4 flex flex-wrap">
+      <div className="bg-accent/50 text-accent-foreground px-3 md:p-6 py-3 rounded-md mb-4 flex flex-wrap">
         <div className="flex flex-col md:flex-row items-grow md:space-x-4 lg:px-10 w-full">
           <div className="md:basis-1/3 flex flex-col self-center items-center">
             <Image
@@ -278,11 +278,11 @@ export default async function WebtoonLiTPage() {
       </div>
 
       <div className="h-full">
-        <ScrollArea className="border rounded-md p-4 h-96 w-full">
+        <ScrollArea className="border rounded-md p-4 h-[40rem] max-h-screen w-full">
           <ul>
             {webtoonName.chapters.reverse().map((data) => (
               <li
-                className="border-b hover:bg-accent/50 hover:text-accent-foreground focus:bg-accent/50 focus:text-accent-foreground"
+                className="border-b hover:rounded-sm hover:bg-accent/50 hover:text-accent-foreground focus:rounded-sm focus:bg-accent/50 focus:text-accent-foreground"
                 key={data.key}
               >
                 <Link
@@ -293,7 +293,7 @@ export default async function WebtoonLiTPage() {
                     className="pr-2"
                     src={`https://ik.imagekit.io/dd5mgem4p/thumbnails/${
                       webtoonName.slug
-                    }/${data.chapname.replace(/[\[\]]/g, "_")} Thumbnail.png`}
+                    }/${data.chapname.replace(/[\[\]\/]/g, "_")} Thumbnail.png`}
                     width={77}
                     height={73}
                     alt={data.chapname}

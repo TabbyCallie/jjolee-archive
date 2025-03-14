@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import NavigationMenuDemo from "@/components/navigation-menu-demo";
+import OurNavigationMenu from "@/components/our-navigation-menu";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 
 export type Folder = { name: string; path: string };
@@ -72,7 +72,7 @@ export default function RootLayout({
           >
             <header>
               <div className="p-2 py-3 flex flex-row space-x-2 justify-between">
-                <NavigationMenuDemo />
+                <OurNavigationMenu />
                 <ModeToggle />
               </div>
             </header>
