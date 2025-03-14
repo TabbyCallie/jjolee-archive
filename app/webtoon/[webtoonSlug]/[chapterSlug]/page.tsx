@@ -403,6 +403,17 @@ function NavButton({
   return;
 }
 
+function Note({ note }: { note?: string }) {
+  if (note) {
+    return (
+      <div className="mt-4 p-3 max-w-[800px] bg-accent/30 rounded-sm text-accent-foreground text-sm">
+        <div className="text-base pb-2 font-semibold">Creator note:</div>
+        {note}
+      </div>
+    );
+  }
+}
+
 type Props = {
   params: { webtoonSlug: string; chapterSlug: string };
 };
@@ -551,13 +562,12 @@ export default async function WebtoonChapterPage({
             name="NEXT"
           />
         </div>
-        <div className="mt-4 p-3 max-w-[800px] bg-accent/30 rounded-sm text-accent-foreground text-sm">
-          {chapterData.note}
-        </div>
+        <Note note={chapterData.note} />
       </div>
     );
   }
 }
+
 async function getImages({
   params,
 }: {
