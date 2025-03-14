@@ -3,6 +3,7 @@ export type chapterFormat = {
   key: number;
   chapslug: string;
   chapname: string;
+  note?: string;
 };
 export type webtoonFormat = {
   key: number;

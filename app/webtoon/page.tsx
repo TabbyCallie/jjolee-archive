@@ -8,14 +8,10 @@ export default async function Home() {
         Webtoons no longer freely accessible on Webtoon:
         <ul className="list-inside list-disc">
           <li>
-            <Link href="/webtoon/lost-in-translation/prologue">
-              Prologue of Lost in Translation
-            </Link>
+            <Link href="/webtoon/lost-in-translation">Lost in Translation</Link>
           </li>
           <li>
-            <Link href="/webtoon/july-17th/one-year-older">
-              July 17th [A birthday comic for a friend of jjolee]
-            </Link>
+            <Link href="/webtoon/july-17th">July 17th</Link>
           </li>
         </ul>
       </div>
